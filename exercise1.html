@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends</title>
+  </head>
+  <body>
+    <h1>Friends Characters!</h1>
+    <div id="app">
+      <p v-if="friendsCharactersList.length === 0">There are no characters</p>
+      <ul v-else-if="friendsCharactersList.length % 2 === 0">
+        <li v-for="character in friendsCharactersList">
+          {{ character.name }}
+        </li>
+      </ul>
+      <p v-else>There are odd characters!</p>
+      <p>
+        <span v-for="(character, index) in friendsCharactersList">
+          {{ character.name }}{{ index === friendsCharactersList.length - 1 ? ' and thats it' : ', ' }}
+        </span>
+      </p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      const app = createApp({
+        data: () => ({
+          friendsCharactersList: [
+            {
+              name: "Ross Geller",
+            },
+            {
+              name: "Monica Geller",
+            },
+            {
+              name: "Chandler Bing",
+            },
+            {
+              name: "Joey Tribbiani",
+            },
+            {
+              name: "Rachel Green",
+            },
+            {
+              name: "Phoebe Buffay",
+            },
+            // {
+            //   name: "Janice"
+            // }
+          ]
+        })
+      }).mount("#app")
+    </script>
+  </body>
+</html>
