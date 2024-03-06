@@ -8,7 +8,19 @@
   </head>
   <body>
     <h1>Hello world!</h1>
-    <div id="app">{{ message }}</div>
+    <div id="app">
+      <p v-if="message.length % 2 === 0">Even: {{ message }}</p>
+      <p v-else>Odd: {{ message }}</p>
+
+      <ul v-for="item in listOfObjects">
+        <li>
+          {{ item.name }} is {{ item.age }} years old.
+          <ul>
+            <li v-for="colors in item.favColors">{{ colors }}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
       const { createApp } = Vue;
@@ -16,7 +28,14 @@
       const app = createApp({
         data() {
           return {
-            message: "Hello, Vue 3!",
+            message: "Hello, Vue 3",
+            listOfNumbers: [1, 2, 3, 4, 5],
+            listOfObjects: [
+              { name: "John", age: 30, favColors: ["red", "blue"] },
+              { name: "Jane", age: 25, favColors: ["green", "yellow"] },
+              { name: "Jake", age: 35, favColors: ["purple", "orange"]},
+              { name: "Jill", age: 40, favColors: ["black", "white"]}
+            ],
           };
         },
       });
