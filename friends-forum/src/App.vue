@@ -1,5 +1,10 @@
 <script>
+  import GenderStatistics from './components/GenderStatistics.vue';
+
   export default {
+    components: {
+      GenderStatistics
+    },
     data: () => ({
           friendsCharactersList: [
             {
@@ -36,25 +41,6 @@
             gender: [""]
           },
         }),
-        computed: {
-          genderStatistics(){
-            const genders = ["Male", "Female"];
-            const statistics = {
-              Male: 0,
-              Female: 0
-            }
-
-            this.friendsCharactersList.forEach(character => {
-              genders.forEach(gender => {
-                if(character.gender.indexOf(gender) > -1){
-                  statistics[gender] += 1
-                }
-              })
-            })
-
-            return statistics;
-          }
-        },
         methods: {
           favorite(character) {
             this.favoriteCharactersList.push(character);
@@ -85,11 +71,8 @@
         {{ character.name }}
       </li>
     </ul>
-    <h2>Statistics</h2>
-    <ul>
-      <li v-for="(stat, type) in genderStatistics" v-bind:key="type">
-        {{ type }}: {{ stat }}
-      </li>
-    </ul>
+
+    <GenderStatistics v-bind:charactersList="friendsCharactersList"/>
+
 </template>
 
