@@ -1,9 +1,11 @@
 <script>
 import BaseCounter from './components/BaseCounter.vue';
+import UserCard from './components/UserCard.vue';
 
 export default {
     components: {
       BaseCounter,
+      UserCard,
     },
     data() {
           return {
@@ -15,17 +17,39 @@ export default {
               { name: "Jake", age: 35, favColors: ["purple", "orange"]},
               { name: "Jill", age: 40, favColors: ["black", "white"]}
             ],
+            user: {
+              name: "John Doe",
+              age: 30,
+              email: "johndoe@gmail.com",
+              favoriteFood: "Pizza"
+            }
           };
         },
         watch: {
           count(newValue){
             console.log('watch: ', newValue);
           }
+        },
+        computed: {
+          refinedUserData(){
+            return{
+              name: this.user.name,
+              food: this.user.favoriteFood,
+            }
+          }
+        },
+        methods: {
+          changeName(){
+            this.user.name = "Jane Doe";
+          }
         }
       }
 </script>
 
 <template>
+      <UserCard :user="refinedUserData" v-on:changeName="changeName"/>
+      <!-- <button @click="changeName">change now</button> -->
+
       <BaseCounter />
 
       <hr />
