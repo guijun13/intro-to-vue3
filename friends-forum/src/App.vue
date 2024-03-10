@@ -1,9 +1,11 @@
 <script>
   import GenderStatistics from './components/GenderStatistics.vue';
+  import CharacterCard from './components/CharacterCard.vue';
 
   export default {
     components: {
-      GenderStatistics
+      GenderStatistics,
+      CharacterCard,
     },
     data: () => ({
           friendsCharactersList: [
@@ -42,8 +44,8 @@
           },
         }),
         methods: {
-          favorite(character) {
-            this.favoriteCharactersList.push(character);
+          addFavorite(payload) {
+            this.favoriteCharactersList.push(payload);
           },
           addNewCharacter(){
             this.friendsCharactersList.push(this.newCharacter);
@@ -57,8 +59,7 @@
 <template>
   <ul>
         <li v-for="character in friendsCharactersList" v-bind:key="character.name">
-          {{ character.name }}
-          <button v-on:click="favorite(character)">Favorite</button>
+          <CharacterCard v-bind:character="character" @favorite="addFavorite"/>
         </li>
       </ul>
       <input type="text" v-model="newCharacter.name" @keyup.enter="addNewCharacter"/>
