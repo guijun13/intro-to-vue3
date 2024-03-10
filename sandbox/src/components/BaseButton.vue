@@ -6,18 +6,14 @@ export default {
   // }
   props: {
     left: Boolean,
-    default: false,
-  },
+    default: () => false
+  }
 }
 </script>
 
 <template>
-<button>
-  <slot v-if="left">
-    Icon Left - Cancel
-  </slot>
-  <slot v-else>
-    Submit
-  </slot>
-</button>
-  </template>
+  <button>
+    <slot v-if="left"> Icon Left - Cancel </slot>
+    <slot v-else> Submit </slot>
+  </button>
+</template>

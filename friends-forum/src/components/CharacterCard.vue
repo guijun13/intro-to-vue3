@@ -1,4 +1,3 @@
-
 <script>
 export default {
   props: {
@@ -10,8 +9,8 @@ export default {
   emits: ['favorite'],
   methods: {
     favorite() {
-      this.$emit('favorite', this.character);
-    },
+      this.$emit('favorite', this.character)
+    }
   }
 }
 </script>

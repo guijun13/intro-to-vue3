@@ -1,8 +1,7 @@
-
 <template>
   <div class="wrapper">
     <aside class="sidebar">
-    <slot name="sidebar" />
+      <slot name="sidebar" />
     </aside>
     <main class="main">
       <slot name="main" />
@@ -14,13 +13,13 @@
 </template>
 
 <style>
-.sidebar{
+.sidebar {
   border: 2px solid red;
 }
-.main{
+.main {
   border: 2px solid blue;
 }
-.footer{
+.footer {
   border: 2px solid green;
 }
 </style>
