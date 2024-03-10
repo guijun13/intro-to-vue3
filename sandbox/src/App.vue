@@ -1,11 +1,15 @@
 <script>
 import BaseCounter from './components/BaseCounter.vue';
 import UserCard from './components/UserCard.vue';
+import BaseButton from './components/BaseButton.vue';
+import BaseLayout from './components/BaseLayout.vue';
 
 export default {
     components: {
       BaseCounter,
       UserCard,
+      BaseButton,
+      BaseLayout,
     },
     data() {
           return {
@@ -47,6 +51,16 @@ export default {
 </script>
 
 <template>
+    <BaseLayout>
+    <template v-slot:sidebar>Aside</template>
+    <template v-slot:main>main</template>
+    <template #footer>footer</template>
+    </BaseLayout>
+
+    <BaseButton :left="false">
+    <!-- Arrow - Hi! -->
+    </BaseButton>
+
       <UserCard :user="refinedUserData" v-on:changeName="changeName"/>
       <!-- <button @click="changeName">change now</button> -->
 
