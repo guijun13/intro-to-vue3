@@ -1,6 +1,6 @@
 <script setup>
-import UserCard from "./UserCard.vue";
 import { userList } from "../composables/useUserStore";
+import UserCard from "../components/UserCard.vue";
 
 defineProps({
   title: {
